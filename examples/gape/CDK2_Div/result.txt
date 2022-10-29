@@ -1,0 +1,15 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+atom 12:N.ar [N] matches Ortho Aminopryidine Base N[1:f]:C(-NH2):C:Any[is=C,N]:C:C:@1 [pK 10.0]
+Adding 1 hydrogen(s) to atom 12:N.ar [N]
+0/10, 0.0 []
+0/10, 0.0 []
+0/10, 0.0 []
+0/10, 0.0 []
+2/10, 1.4672360483649391 [GA ranked 1 1P5E,GA ranked 1 1WCC]
+2/10, 1.9817675545155955 [GA ranked 1 1W0X,GA ranked 1 1WCC]
+5/10, 1.8994710597305537 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1GIH,GA ranked 1 1H1S,GA ranked 1 1P5E,GA ranked 1 2BHE]
+5/10, 1.8994710597305542 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1GIH,GA ranked 1 1H1S,GA ranked 1 1P5E,GA ranked 1 2BHE]
+5/10, 1.8994710597305544 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1GIH,GA ranked 1 1H1S,GA ranked 1 1P5E,GA ranked 1 2BHE]
+**Best** **pass** 5/10, 1.8994710597305555 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1GIH,GA ranked 1 1H1S,GA ranked 1 1P5E,GA ranked 1 2BHE]
+Writing fitting to Fitted_GA_ranked_1.sdf

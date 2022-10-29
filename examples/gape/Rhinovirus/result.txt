@@ -1,0 +1,11 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+4/8, 1.2832555453521675 [GA ranked 1 2R04.*,GA ranked 1 2R06.*,GA ranked 1 2R07.*,GA ranked 1 2RS5.*]
+4/8, 1.283255545352169 [GA ranked 1 2R04.*,GA ranked 1 2R06.*,GA ranked 1 2R07.*,GA ranked 1 2RS5.*]
+4/8, 1.2832555453521692 [GA ranked 1 2R04.*,GA ranked 1 2R06.*,GA ranked 1 2R07.*,GA ranked 1 2RS5.*]
+4/8, 1.2832555453521723 [GA ranked 1 2R04.*,GA ranked 1 2R06.*,GA ranked 1 2R07.*,GA ranked 1 2RS5.*]
+4/8, 1.597452109602011 [GA ranked 1 2RM2.* Base Molecule,GA ranked 1 2RR1.*,GA ranked 1 2RS1.*,GA ranked 1 2RS3.*]
+4/8, 1.5974521096020131 [GA ranked 1 2RM2.* Base Molecule,GA ranked 1 2RR1.*,GA ranked 1 2RS1.*,GA ranked 1 2RS3.*]
+4/8, 1.5974521096020133 [GA ranked 1 2RM2.* Base Molecule,GA ranked 1 2RR1.*,GA ranked 1 2RS1.*,GA ranked 1 2RS3.*]
+**Best** **pass** 4/8, 1.5974521096020147 [GA ranked 1 2RM2.* Base Molecule,GA ranked 1 2RR1.*,GA ranked 1 2RS1.*,GA ranked 1 2RS3.*]
+Writing fitting to Fitted_GA_ranked_1.sdf

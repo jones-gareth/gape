@@ -1,0 +1,16 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+0/13, 0.0 []
+3/13, 1.5011517481307244 [GA ranked 1 1A52.*,GA ranked 1 1XQC.*,GA ranked 1 2BJ4.A]
+3/13, 1.501151748130726 [GA ranked 1 1A52.*,GA ranked 1 1XQC.*,GA ranked 1 2BJ4.A]
+5/13, 1.9583838896747758 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 3ERD.*]
+5/13, 1.9583838896747763 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 3ERD.*]
+5/13, 1.958383889674779 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699924 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699929 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699944 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699953 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699955 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+10/13, 1.8450091187699957 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+**Best** **pass** 10/13, 1.8450091187699968 [GA ranked 1 1GWQ.*,GA ranked 1 1L2I.*,GA ranked 1 1R5K.*,GA ranked 1 1SJ0.*,GA ranked 1 1UOM.A,GA ranked 1 1X7E.*,GA ranked 1 1X7R.*,GA ranked 1 1XP1.* Base Molecule,GA ranked 1 1XP9.*,GA ranked 1 3ERD.*]
+Writing fitting to Fitted_GA_ranked_1.sdf

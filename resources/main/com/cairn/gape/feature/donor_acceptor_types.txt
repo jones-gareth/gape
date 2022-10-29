@@ -1,0 +1,96 @@
+
+
+#  Donor and acceptors from Mills & Dean JCAMD, 10 (1996) 607-622.  
+
+#  Tabs separate fields
+
+#  In the case of cis/trans proferences take the probability mean- if
+#  only one is present then devide by two
+
+#  The sln patterns only support these attributes: f, !h, is= and
+#  not=.  Z and Y act as Hev but must match the same elemental types,
+#  additionally X != Y.
+
+#  The patterns for amide groups will match N.pl3 atoms.  In GAPE
+#  these are modeled as planar, not pyramidal.	A correction is
+#  applied within GAPE.
+#
+#  if not set weight defaults to number of atoms
+
+ Type		Name		  Group Prob	LP Geometry    SLN		Weight (optional)	     
+
+acceptor	Terminal Phosphate	0.90	cone	O[f]=-P(=-O[f])(-Hev)=-O[f]
+acceptor	Phosphinyl		0.64	cone	O[f]=-P(-Hev)(-Hev)=-O[f]
+acceptor	Carboxylate		0.56	dir	O[f]=-C(-Hev)=-O[f]
+acceptor	Asymetric Het6 N	0.54	dir	N[1:f]:-=Z:-=Hev:-=Hev:-=Hev:=-Y:-@1
+acceptor	Acid O			0.40	dir	O[f]=Any[is=P,C,S]-OH
+acceptor	Symmetric Het5 N	0.48	dir	N[1:f]:-=Z:-=Hev:-=Hev:=-Z:-@1
+acceptor	Sulphoxide		0.40	cone	O[f]=S(-Hev)-Hev
+acceptor	Primary Amine		0.40	dir	N.3[f]H2-Hev
+acceptor	Asymmetric Het5 N	0.39	dir	N[1:f]:-=Z:-=Hev:-=Hev:=-Y:-@1
+acceptor	Thiocarbonyl		0.39	plane	S[f]=C
+acceptor	Hydroxyl		0.38	plane	O[f]H-Hev
+acceptor	Symmetric Het6 N	0.38	dir	N[1:f]:-=Z:-=Hev:-=Hev:-=Hev:=-Z:-@1
+acceptor	Terminal Sulphate	0.35	cone	O[f]=-S(=-O[f])=-O[f]	
+acceptor	Tertiary Amine		0.32	dir	N.3[f](Hev)(Hev)Hev
+acceptor	Ester O			0.17	plane	O[f]=C(-Hev)-O-Hev
+acceptor	Carbamate O		0.20	plane	O[f]=C(-O-Hev)NH-Hev
+acceptor	Nitrile			0.21	dir	N[f]#C
+acceptor	Imine			0.19	dir	N[f](-Any)=Hev
+
+ Dean and Mills have the probability for =O to be 0.18.	 However,  this
+ doesn't square with the importance of this group in QSAR studies.
+ So, based on empirical observation, I've adjusted the probability to
+ that of Thicarbonyl 0.4.
+
+# acceptor	Ketone			0.18	plane	O[f]=C(-Hev)
+acceptor	Ketone			0.40	plane	O[f]=C(-Hev)
+
+acceptor	Secondary Amine		0.18	dir	N.3[f]H(-Hev)-Hev
+acceptor	Phenol OH		0.13	plane	O[f]H-C[1]-:C=:C-:C=:C-:C=:@1
+acceptor	Ether			0.11	plane	O[f](-Hev)-Hev
+# In GAPE phenyl NH2 is planar
+# acceptor	Phenyl NH2		0.08	dir	NH2-C[1]-:C=:C-:C=:C-:C=:@1
+# two acceptor geometries for Het5 O, depending on if O is aromatic
+acceptor	Het5 O			0.04	plane	O[1:f]-Hev-=Hev-=Hev-=Hev-@1
+acceptor	Het5 O Aromatic		0.04	dir	O[1:f]:Hev:Hev:Hev:Hev:@1
+acceptor	Nitro O			0.04	dir	O[f]=-N=-O[f]
+acceptor	Sulphone		0.02	dir	O[f]=S(=O)-Hev
+
+donor		Het5 NH			0.89	N[1:f]H:-=Hev:-=Hev:-=Hev:-=Hev:-=@1
+
+donor		sp2 N+H			0.82	N[f]H(=Hev)-Hev
+# added charge to these guys, so pyrrole doesn't match
+donor		sp2 N+H			0.82	N[f;fcharge=1.0]H(:Hev):Hev
+donor		sp2 N+H			0.82	N[f;fcharge=0.5]H(=:Hev)-:Hev
+donor		sp2 N+H			0.82	N[f;fcharge=0.5]H(-Hev)-=:C-=:N[fcharge=0.5]
+
+donor		Acid OH			0.82	O[f]H-Any[is=C,P,S]=:O
+
+donor		sp2 N+H2		0.75	N[f]H2=:Hev
+# sp2 pattern for charged amino pyridine
+donor		sp2 N+H2		0.75	N[f;fcharge=0.5]H2-C:C
+# sp2 pattern for 
+donor		sp2 N+H2		0.75	N[f;fcharge=0.5]H2-=:C-=:N[fcharge=0.5]
+
+donor		sp3 N+H3		0.74	N[f]H3-Hev
+donor		sp3 N+H2		0.73	N[f]H2(-Hev)-Hev
+donor		OH			0.68	O[f]H-Hev
+donor		Primary Amide NH2	0.62	N[f]H2-C=O	5
+donor		Secondary Amide NH	0.54	N[f]H(-Hev)-C=O	5
+donor		Phenyl NH		0.58	N[f]H(-Hev)-C[1]-:C=:C-:C=:C-:C=:@1
+donor		Phenyl NH2		0.46	N[f]H2-C[1]-:C=:C-:C=:C-:C=:@1
+
+ Dean and Mills have the probability for N+H to be 0.34.  However this
+ doesn't square with the importance of this group in QSAR studies.
+ So, based on empirical observation, I've adjusted the probability to
+ that of N+H2.
+
+# donor		sp3 N+H			0.34	N[f]H(-Hev)(-Hev)-Hev
+donor		sp3 N+H			0.73	N[f]H(-Hev)(-Hev)-Hev
+
+donor		Imine NH		0.33	N[f]N=Hev
+donor		Phenyl OH		0.30	OH-C[1]-:C=:C-:C=:C-:C=:@1
+donor		Primary Amine NH2	0.26	N[f]H2-Hev
+donor		Secondary Amine NH	0.24	N[f]H(-Hev)-Hev
+

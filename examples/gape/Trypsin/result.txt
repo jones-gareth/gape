@@ -1,0 +1,10 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+0/7, 0.0 []
+6/7, 1.4289934313984183 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+6/7, 1.4289934313984183 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+6/7, 1.4289934313984187 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+6/7, 1.4289934313984192 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+6/7, 1.4289934313984194 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+**Best** **pass** 6/7, 1.4289934313984205 [GA ranked 1 1TNH,GA ranked 1 1TNI,GA ranked 1 1TNJ,GA ranked 1 1TNK,GA ranked 1 1TNL,GA ranked 1 3PTB]
+Writing fitting to Fitted_GA_ranked_1.sdf

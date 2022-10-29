@@ -1,0 +1,9 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+Searching isomorphism 100
+Searching isomorphism 100
+0/5, 0.0 []
+0/5, 0.0 []
+0/5, 0.0 []
+0/5, 0.0 []
+**Best** **fail** 0/5, 0.0 []

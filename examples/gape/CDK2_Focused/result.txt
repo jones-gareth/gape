@@ -1,0 +1,12 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+9/9, 1.1027943174216235 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.1027943174216235 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.1027943174216237 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.1027943174216237 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.102794317421624 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.102794317421624 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.1027943174216241 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+9/9, 1.1027943174216241 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+**Best** **pass** 9/9, 1.1027943174216241 [GA ranked 1 1AQ1 Base Molecule,GA ranked 1 1DM2,GA ranked 1 1E9H,GA ranked 1 1GIH,GA ranked 1 1KE7,GA ranked 1 1P2A,GA ranked 1 1PF8,GA ranked 1 2BHE,GA ranked 1 2BHH]
+Writing fitting to Fitted_GA_ranked_1.sdf

@@ -1,0 +1,14 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+atom 1:N.3 [N] matches Secondary Aliphatic Amine Base N[f]H(-C[nconn=4])-C[nconn=4] [pK 10.0]
+Adding 1 hydrogen(s) to atom 1:N.3 [N]
+Searching isomorphism 100
+Searching isomorphism 200
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+**Best** **fail** 0/8, 0.0 []

@@ -1,0 +1,21 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+atom 56:N.3 [N] matches Tertiary Aliphatic Amine Base N[f;!h](-C[nconn=4])(-C[nconn=4])-C[nconn=4] [pK 10.0]
+Adding 1 hydrogen(s) to atom 56:N.3 [N]
+atom 29:N.2 [N] matches Amidine Base N[f]H=C-N [pK 12.4]
+Adding 1 hydrogen(s) to atom 29:N.2 [N]
+atom 47:N.2 [N] matches Amidine Base N[f]H=C-N [pK 12.4]
+Adding 1 hydrogen(s) to atom 47:N.2 [N]
+atom 26:N.3 [N] matches Tertiary Aliphatic Amine Base N[f;!h](-C[nconn=4])(-C[nconn=4])-C[nconn=4] [pK 10.0]
+Adding 1 hydrogen(s) to atom 26:N.3 [N]
+atom 51:N.3 [N] matches Tertiary Aliphatic Amine Base N[f;!h](-C[nconn=4])(-C[nconn=4])-C[nconn=4] [pK 10.0]
+Adding 1 hydrogen(s) to atom 51:N.3 [N]
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+0/8, 0.0 []
+2/8, 1.622536243816379 [GA ranked 1 1IOE.A Base Molecule,GA ranked 1 1IQM]
+**Best** **fail** 2/8, 1.6225362438163795 [GA ranked 1 1IOE.A Base Molecule,GA ranked 1 1IQM]
+Writing fitting to Fitted_GA_ranked_1.sdf

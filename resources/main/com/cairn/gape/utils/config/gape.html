@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>GAPE</title>
+  </head>
+
+  <body>
+    <h1>GAPE</h1>
+    
+    <ol>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#utilities">Utilities</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#search">Pharm Search</a></li>
+      <li><a href="#grips">GRIPS (Gape RIgid Pharmacophore Search)</a></li>
+      <li><a href="#docs">More Documentation</a></li>
+      <li><a href="#refs">References</a></li>
+    </ol>
+    
+    <p>
+      Note: these programs handle both MOL2 and SDF structure files.
+      Wherever a reference to a MOL2 file appears you can normally
+      substitute an SDF file.  Output files are normally in the same
+      format as input files.
+      </p>
+
+    <h2>Genetic Algorithm for Pharmacophore Elcuidation</h2>
+    
+    <a name="usage"></a> <h3>Usage</h3>
+    
+    <p><pre> java -server com.cairn.ga.Superposition &lt;configuration_file&gt; &lt;structure_files&gt;</pre>
+    </p>
+    <p>
+      Overlays the structures in the &lt;structure_files&gt; and
+      elucidates a pharmacophore.  The pharmacophore is comprised of
+      features such as donor hydrogens, acceptor atoms and planar
+      rings. 
+    </p>
+    <p>
+      GAPE uses a Genetic Algorithm (GA) to align structures and a
+      fitness score to optimize that alignment.  The fitness score
+      includes terms for matchin features and common molecular volume.
+      In a GA a set of encoded problem representations called
+      chromosomes compete over time.  Hopefully, when the GA
+      terminates the fittest chromosome is a good solution to the
+      problem under investigation.  Since GAs are non-deterministic a
+      GAPE job, or single program execution, consists of a number of
+      GA runs that can then be sorted using the fitness of the best
+      solutions.
+    </p>
+    <p>
+      Program input consists of structure files containing the
+      molecules you want to overlay and a configuration file.  The
+      structure files may be Tripos mol2 or MDL sdf format. GAPE
+      expects structures to include hydrogens and have groups which
+      are normally charged at physiological pH ionized. However, GAPE
+      can also be configured to fill valance with hydrogens and change
+      common acids and bases.  GAPE will not attempt to overlay more
+      than 7 structures- if you supply more than 7 structures only the
+      first 7 will be processed.  The configuration file, <a
+      href="superposition.conf">superpositon.conf</a> contains
+      run-time settings and instructions.  You can use this file to
+      re-parameterize the GA or the fitness function.
+    </p>
+    <p>
+      Output consists of a log file, called <i>ga.out</i>.  Each GA
+      run produces a mol2 file (or sdf file if the input structures
+      are in sdf format) of aligned structures and elucidated
+      parmacophore: <i>GA_1.mol2</i>, <i>GA_2.mol2</i>,
+      <i>GA_3.mol2</i> etc.  These files are created as each of the
+      runs finish.  On completion of all runs in the job, all the runs
+      are sorted by GA fitness and output in ranked files:
+      <i>GA_ranked_1.mol2</i>, <i>GA_ranked_2.mol2</i>,
+      <i>GA_ranked_3.mol2</i> etc.  Thus <i>GA_ranked_1.mol2</i> is
+      GAPEs best prediction.  The base molecule structure in these files
+      also contains pharmacophore information in a MOL2 comment
+      section (or SD field) which can be read by the <a
+      href="#grips">GRIPS</a> program.
+    </p>
+    <p>
+      By default GAPE will overlay donor hydrogens, acceptors, planar
+      rings and moleuclar volumes. The user can define additional
+      features.  An example feature definition file based on acceptors
+      can be found <a href="example_user_features.txt">here</a>.
+    </p>
+    
+    <a name="installation"></a> <h3>Installation</h3>
+
+    <p>
+      GAPE is a Java program, so you need to have Java installed.
+      This section assumes that you are familar with setting
+      environment variables and navigating your file system.  GAPE has
+      been tested in a number of Java environments on Windows and
+      Linux and the Sun SDK (J2SE version 1.5.0 or later) has the best
+      performance (get it from <a
+      href="http://java.sun.com">java.sun.com</a>).
+    </p>
+    <p>
+      The file <i>gape.jar</i> contains the Java bytecode for GAPE and
+      associated utilities.  You need to add the full path to
+      <i>gape.jar</i> to your CLASSPATH variable. (The configeditor
+      and moleculeviewer us the Tonic look and feel so also add
+      <i>toniclf</i> to CLASSPATH). On Windows the CLASSPATH vairable
+      is a list of Jar files and directories separated by ';', on
+      Linux and other UNIX systems the separator is ':' (if GAPE is
+      the only Java program you run you won't need to worry about the
+      separator).
+    </p>
+    <p>
+      If the Java SDK is already installed on your system, then on
+      Linux you're likely to find in under
+      /usr/java/j2sdk&lt;version&gt;, on windows in
+      c:\j2sdk&lt;version&gt;.  The Java program will be inside the
+      bin directory: you should add this directory to your path if it hasn't
+      been added already.  GAPE will also work with the Java Runtime
+      (JRE), on Windows you'll find this in c:\Program
+      Files\Java\j2re&lt;version&gt;. However, if you use JRE, the
+      '-server' argument to Java won't work. Using the server VM
+      (instead of the client VM, which is the default) results in a
+      30% improvement in speed.
+    </p>
+    <p>
+      GAPE makes use of JNI (native code) for faster maths operations
+      and to get CPU timings.  The native code is in the library files
+      <i>NativeUtils.dll</i> for Windows and <i>libNativeUtils.so</i>
+      for Linux. The correct library for your system needs to be in a
+      directory that Java will search for libraries.  For Windows this
+      is any directory in the PATH environment variable, for
+      Linux/UNIX it's any directory in the LD_LIBRARY_PATH environment
+      variable.  So you either need to copy the correct library to one
+      of the directories in the enviroment variable or add the install
+      directory to the environment variable.  For systems other than
+      Linux or Windows (or if you run into library problems) both <a
+      href=NativeUtils.c>NativeUtils.c</a> and <a
+      href=NativeUtils.h>NativeUtils.h</a> are included here, so you
+      can compile your own library. NativeUtils.c includes example
+      compile commands.
+    </p>
+    <p>
+      If you're using Linux or Cygwin, you may wish to take advantage
+      of the bash alias command: 
+      </p>
+    <pre>alias gape="java -server com.cairn.ga.Superposition"</pre>
+    <p>
+      There is an example setup file (<a href=bashrc>bashrc</a>) in
+      the distribution directory.  This sets up the environment for a
+      Linux machine and defines convenient aliases.
+    </p>
+
+    <a name="utilities"></a> <h3>Utilities</h3>
+
+    <pre>java com.cairn.ga.ConfigEditor</pre>
+    <p>
+      Provides a graphical front end for editing configuration files.
+    </p>
+    <pre>java com.cairn.molecule.MoleculeUtils</pre>
+    <p>
+      Performs a number of useful transforms on structure files (for
+      exmaple, add hydrogens, solvate or remove lone pairs)
+    </p>
+      <pre>java com.cairn.ga.PatternMatch</pre>
+    <p>
+      Searches an sln pattern against a mol2 file.
+    </p> 
+    <pre>java com.cairn.intranet.molecule.MolViewer</pre>
+    <p>
+        Takes mol2 or sdf files and displays them in a simple viewer.
+    </p>
+    
+    <a name="examples"></a> <h3>Examples</h3>
+
+    <p>
+      The examples directory contains a mumber of examples!  Each test
+      system has it's own sub-directory.  The examples range from
+      trivial (metho_sf, benzodiazepine) to complex (dean_methyl2,
+      5ht2a_2).
+    </p>
+    <p>
+      Each example was processed using the command 
+    </p>
+    <pre>java -server com.cairn.ga.Superpositon ../superposition.conf test.mol2</pre>
+    <p>
+      Each test directory contains the input structures in
+      <i>test.mol2</i> and the GAPE prediction in <i>GA ranked
+      1.mol2</i>.  You can view the predictions using the viewer
+      utility:
+    </p>
+    <pre>java com.cairn.intranet.molecule.MolViewer GA_ranked_1.mol2</pre>
+
+    <a name="search"></a> <h3>Pharm Search</h3>
+
+    <p>
+      An additional program is available to screen a database of
+      compounds against a rigid query.  This is equivalent to multiple
+      GAPE runs, each of which compares the same rigid base molecule
+      against a different flexible database molecule.  Once the last
+      database molecule has been searched the GAPE target function can
+      be used to rank database compounds against the query.
+    </p>  
+
+    <p><pre> java -server  -Xmx1024M com.cairn.ga.PharmSearch &lt;configuration_file&gt; &lt;structure_files&gt;</pre></p>
+
+    <p>
+      The first structure contained in &lt;structure_files&gt; is the
+      rigid query, all the other structures are database compounds.
+      Once the program is completed an ordered list of best target
+      conformations is saved in <i>Matches.mol2</i>, while all GAPE
+      overlays are contained in <i>All_Solutions.mol2</i> (or
+      <i>Matches.sdf</i> and <i>All_Solutions.sdf</i>if SDF file
+      format is used in the input files).
+      </p>
+    <p>
+      An example is contained in <i>examples/pharm_5ht2a</i>.  The
+      base molecule conformation was extracted from
+      <i>examples/5ht2a_2/GA_ranked_1.mol2</i> and saved in
+      <i>query.mol2</i>. Pharm search was performed using the command:
+    </p>
+    <pre>java -server com.cairn.ga.Superpositon pharm_search.conf query.mol2 all.mol2</pre>
+    <p>
+      <i>All.mol2</i> contains a number of 5ht2a actives.  <a
+      href="pharm_search.conf">pharm_search.conf</a> contains the same
+      parameters as <i>superposition.conf</i>, but is parameterised
+      for fewer and faster GA runs.  You can view the predictions
+      using the viewer utility:
+    </p>
+    <pre>java com.cairn.intranet.molecule.MolViewer Matches.mol2</pre>
+
+    </p>
+
+    <a name="grips"></a> <h3>GRIPS (GAPE RIgid Pharmacophore Search)</h3>
+    
+    <p><pre> java -server -Xmx1024M com.cairn.ga.RigidPharmSearch &lt;configuration_file&gt; &lt;query_file&gt; &lt;conformer_files&gt;</pre>
+    </p>
+    <p>
+      A third program matches a query against a conformer library (the
+      conformer library can be gzipped).  Clique detection is used to
+      match features in the query against conformers.  If at least
+      three points match then the conformer can be fitted on the query
+      and the overlay scored using the GAPE scoring function (using a
+      feature match score and the volume overlay score).
+    </p>
+
+    <p>
+      The configuration file contains special settings for GRIPS. An
+      example is <a href="rigid_search.conf">here</a>.  The conformer
+      files can be gzipped. Ordered hits are output in
+      <i>Matches.sdf</i> (or <i>Matches.mol2</i> if MOL2 file format
+      is used in the input files).
+    </p>
+    
+    <h4>GRIPS Queries</h4>
+
+    <p>
+      Three types of query are avialable.  Firstly, you can use a
+      single structure and not include any pharmacophore.  In this
+      case all features in the single query structure are used.  To
+      select this use the &lt;no_pharmacophore&gt; setting in the
+      configuration file.  This option will also be chosen
+      automatically if you only have one query structure and it has no
+      pharmacophore.
+    </p>
+    <p>
+      Secondly you can use the results of a GAPE run as a query.  In
+      this case the query features will be selected from the base
+      molecule pharmacophore (you can change this by setting
+      &lt;base_molecule_only&gt; to no- in this case pharmacophore
+      features from all molecules in the overlay will be considered)
+      and all molecules in the overlay contribute to the volume score.
+      Obvoiusly, using these options you don't have to use the complet
+      GAPE overlay as a query. You could extract just the base
+      molecule (or another molecule from the overlay) and use it as a
+      query.
+    </p>
+      Finally, the query can just include a pharmacophore (in a .pharm
+      file).  It his case the soring function will only include a
+      feature match term- the volume score will be 0.
+    </p>
+    <p>
+      You can create pharmacophore queries from GAPE overlays.  Use
+      this to extract the base molecule pharmacophore.
+    </p>
+    <pre>java com.cairn.ga.Pharmacophore -extract-base-only-pharm GA_ranked_1.mol2 ga.pharm</pre>
+    <p>
+      And use this to extract pharmacophore points for all molecules in the
+      overlay.
+    </p>
+    <pre>java com.cairn.ga.Pharmacophore -extract-pharm GA_ranked_1.mol2 ga.pharm</pre>
+
+
+    <h4>GRIPS Performance</h4>
+    
+    <p>
+      Grips can spend much more time reading and preparing input
+      structures than searching for matches.  There are some things
+      that can be done to improve performance.  Firstly, it's best to
+      solvate and add hydrogens before running GRIPS, rather than have
+      GRIPS do this. So turn off these options in the configuration
+      file.  Conformer libraries can be prepared using this command:
+    </p>
+      <pre>java com.cairn.molecule.MoleculeUtils prepare mols.sdf.gz mols_prepared.sdf.gz</pre>
+    <p>
+      Secondly, GRIPS will run a lot faster if in know that one
+      structure is just a new conformer of the previous structure.
+      This is implemented for the OpenEye conformer naming scheme
+      (conformer names are like conformer_1, conformer_2 or
+      conformer_1_rconf, conformer_2_rconf etc) using the
+      &lt;openeye_conformers&gt; setting.
+    </p>
+    
+    <a name="docs"></a> <h3>More Documentation</h3>
+    <ol>
+      <li>
+        <a href=cup2005.html>OpenEye CUP 2005 Abstract</a>
+      </li>
+      <li>
+        <a href=cup2005.ppt>OpenEye CUP 2005 Presentation</a>
+      </li>
+    </ol>
+    
+    <a name="refs"></a> <h3>References</h3>
+    
+    <ol>
+      <li>
+        G. Jones, P. Willett and R. C. Glen, "A Genetic Algorithm for Flexible Molecular Overlay and Pharmacophore Elucidation," Journal of Computer-Aided Molecular Design 9 (1995) pp.532-549. 
+        </li>
+      <li>
+        G. Jones, P. Willett, R. C. Glen, A. R. Leach and R. Taylor, "Development and Validation of a Genetic Algorithm for Flexible Docking," Journal of Molecular Biology 267 (1997) pp.727-748.
+      </li>
+      <li>
+        J.E.J Mills and P.M. Dean, "Three-Dimensional Hydrogen-bond Geometry and Probability Information from a Crystal Survey," Journal of Computer-Aided Molecular Design 10 (1996) pp.607-622.
+      </li>
+</ol>
+    
+    </p>
+    <hr>
+    <address><a href="mailto:jones_gareth@outlook.com">Gareth Jones</a></address>
+    <!-- Created: Thu Sep 09 15:55:33 Mountain Daylight Time 2004 -->
+  </body>
+</html>

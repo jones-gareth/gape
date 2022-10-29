@@ -1,0 +1,20 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+Adding 1 hydrogen(s) to atom 2:C.1 [C]
+Adding 1 hydrogen(s) to atom 7:C.1 [C]
+Adding 1 hydrogen(s) to atom 10:C.1 [C]
+atom 5:N.ar [N] matches Ortho Aminopryidine Base N[1:f]:C(-NH2):C:Any[is=C,N]:C:C:@1 [pK 10.0]
+Adding 1 hydrogen(s) to atom 5:N.ar [N]
+0/12, 0.0 []
+2/12, 1.8963967874164267 [GA ranked 1 1DI9.*,GA ranked 1 1W7H.A]
+2/12, 1.8963967874164296 [GA ranked 1 1DI9.*,GA ranked 1 1W7H.A]
+11/12, 1.9321934773243672 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243674 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243674 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243674 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243674 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243676 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243676 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+11/12, 1.9321934773243679 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+**Best** **pass** 11/12, 1.9321934773243679 [GA ranked 1 1A9U.*,GA ranked 1 1BL6.*,GA ranked 1 1BL7.*,GA ranked 1 1DI9.*,GA ranked 1 1M7Q.*,GA ranked 1 1OUK.*,GA ranked 1 1OUY.*,GA ranked 1 1OVE.*,GA ranked 1 1OZ1.*,GA ranked 1 1W7H.A,GA ranked 1 1YQJ.* Base Molecule]
+Writing fitting to Fitted_GA_ranked_1.sdf

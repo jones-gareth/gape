@@ -1,0 +1,60 @@
+
+# This is an example user feature definition file.  It's based on
+# Mills and Dean acceptor types.
+
+# Feature set name
+
+name = User Donors
+
+# Weight- The feature score is scaled by this weight in the the
+# chomosome fitness.  This should be a positive number for attractive
+# features (features you want to superimpose) and negative for
+# repulsive features.
+
+weight = 1500
+
+# Radius- the approximate radius of the feature gaussian (in angstrom).
+
+radius = 1.5
+
+# Atom_centered- the feature gausian is normally placed in the center
+# of the feature.  Set this to have the gaussian centered on the first
+# atom in the feature definition.
+
+atom_centered = yes
+
+#  Next comes the Feature section: each feature has a name, weight and
+#  SLN definition.  Leave this line in - it tells GAPE that the
+#  feature definition is starting.
+
+START_FEATURES
+
+#  Tabs separate fields
+
+#  The sln patterns only support these attributes: f, !h, is= and
+#  not=.  Z and Y act as Hev but must match the same elemental types,
+#  additionally X != Y.
+
+#  The weight is used to scale the gaussian overlays.  For two
+#  features the maximum gaussian overlay is 1.0 (when the features are
+#  on top of each other). The overlay score is scaled by the sum of
+#  the weights.
+
+	Name		Weight	SLN	     
+
+Het5 NH			0.89	N[1:f]HHev:-=Hev:-=Hev:-=Hev-@1
+sp2 N+H			0.82	N[f]H(=:Hev)-:Hev
+Acid OH			0.82	OH-Any[is=C,P,S]=:O
+sp2 N+H2		0.75	N[f]H2=:Hev
+sp3 N+H3		0.74	N[f]H3-Hev
+sp3 N+H2		0.73	N[f]H2(-Hev)-Hev
+OH			0.68	OH-Hev
+Primary Amide NH2	0.62	N[f]H2-C=O
+Phenyl NH		0.58	N[f]H(-Hev)-C[1]-:C=:C-:C=:C-:C=:@1
+Secondary Amide NH	0.54	N[f]H(-Hev)-C=O
+Phenyl NH2		0.46	N[f]H2-C[1]-:C=:C-:C=:C-:C=:@1
+sp3 N+H			0.73	N[f]H(-Hev)(-Hev)-Hev
+Imine NH		0.33	N[f]N=Hev
+Phenyl OH		0.30	OH-C[1]-:C=:C-:C=:C-:C=:@1
+Primary Amine NH2	0.26	N[f]H2-Hev
+Secondary Amine NH	0.24	N[f]H(-Hev)-Hev

@@ -1,0 +1,220 @@
+package com.cairn.molecule;
+
+import java.io.PrintStream;
+
+public class DonorAcceptorType {    
+    public int donorAcceptorType;
+    String name;
+    public boolean donor;
+    public boolean acceptor;
+    public boolean charged;
+    
+    public AcceptorGeometry acceptorGeometry;
+    public AtomType atomType;
+
+    //acceptor gemoetries
+    public enum AcceptorGeometry {AG_NONE, DIR, PLANE, CONE}
+    
+    // Donor acceptor types: we only use some of these
+    // These are used as indexes so can't use enumerated type!
+    public static final int 
+        DA_NONE=0, O2A=1, O3DA=2, O3A=3, OCO2A=4, NPL3D=5, 
+        NAMD=6, N2DA=7, N1A=8, N3A=9, N2A=10, 
+        N4D=11, SOCO2A=12, O2NA=13, NPLCD_ARG=14, NPLCD_GUA=15, 
+        NACIDA=16, NACIDDA=19, FED=20, 
+        MND=21, ONO2A=23, NPLCD_PRO=24, POCO2A=25, 
+        SO2A=26, OMINUSA=27, ONA=28, NARA=29,  N3DA=30, N2D=40, NPLCD=41, 
+        OARA=42,
+        
+        DA_USER1=30, DA_USER2=31, DA_USER3=32, DA_USER4=33, DA_USER5=34,
+        DA_USER6=35, DA_USER7=36, DA_USER8=37, DA_USER9=38, DA_USER10=39;
+
+    DonorAcceptorType() {;}
+
+    DonorAcceptorType(int type, String _name, AtomType.Type atomTypeNo, 
+    		boolean _donor, 
+    		boolean _acceptor, AcceptorGeometry _acceptorGeometry, 
+    		boolean _charged) {
+        donorAcceptorType = type;
+        name = _name;
+        donor = _donor;
+        acceptor = _acceptor;
+        acceptorGeometry = _acceptorGeometry;
+        charged = _charged;
+        if (atomTypeNo != AtomType.Type.ATM_NONE)
+            atomType = AtomType.sybType(atomTypeNo);
+    }
+
+    public static DonorAcceptorType[] donorAcceptorTypes = {
+    
+        // Acceptors
+        new DonorAcceptorType
+        (O2A, "O sp2 acceptor", AtomType.Type.O2, false, true, AcceptorGeometry.PLANE, false),
+        new DonorAcceptorType
+        (O3A, "O sp3 acceptor", AtomType.Type.O3, false, true, AcceptorGeometry.PLANE, false),
+        new DonorAcceptorType
+        (OCO2A, "Acidic O acceptor", AtomType.Type.OCO2, false, true, AcceptorGeometry.DIR, true),
+        new DonorAcceptorType
+        (N1A, "N sp1 acceptor", AtomType.Type.N1, false, true, AcceptorGeometry.DIR, false),
+        new DonorAcceptorType
+        (N2A, "N sp2 acceptor", AtomType.Type.N2, false, true, AcceptorGeometry.DIR, false),
+        new DonorAcceptorType
+        (NARA, "Aromatic N acceptor", AtomType.Type.NAR, false, true, AcceptorGeometry.DIR, false),
+        new DonorAcceptorType
+        (N3A, "N sp3 acceptor", AtomType.Type.N3, false, true, AcceptorGeometry.DIR, false),
+
+        // Elucidated Acceptors
+        new DonorAcceptorType
+        (O2NA, "Amide Oxygen acceptor", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.PLANE, false),
+        new DonorAcceptorType
+        (SO2A, "Sulphur Oxygen acceptor", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.AG_NONE, false),
+        new DonorAcceptorType
+        (OARA, "Aromatic oxygen acceptor", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.DIR, false),
+        new DonorAcceptorType
+        (OMINUSA, "Aromatic oxygen acceptor", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.AG_NONE, true),
+        new DonorAcceptorType
+        (NACIDA, "Charged acidic nitrogen acceptor", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.DIR, true),
+        new DonorAcceptorType
+        (SOCO2A, "Oxygen in SO3- or SO2--", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.CONE, true),
+        new DonorAcceptorType
+        (POCO2A, "Oxygen in PO2- or PO3--", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.CONE, true),
+        new DonorAcceptorType
+        (ONO2A, "Oxygen in nitro group", AtomType.Type.ATM_NONE, false, true, AcceptorGeometry.DIR, true),
+
+
+        // Donor Acceptors
+        new DonorAcceptorType
+        (O3DA, "O sp3 donor", AtomType.Type.O3, true, true, AcceptorGeometry.PLANE, false),
+        new DonorAcceptorType
+        (N3DA, "N sp3 donor", AtomType.Type.N3, true, true, AcceptorGeometry.DIR, false),
+        new DonorAcceptorType
+        (N2DA, "N sp2 donor", AtomType.Type.N2, true, true, AcceptorGeometry.DIR, false),
+        
+        // Donors
+        new DonorAcceptorType
+        (NPL3D, "N trigonal donor", AtomType.Type.NPL3, true, false, AcceptorGeometry.AG_NONE, false),
+        new DonorAcceptorType
+        (NAMD, "Amide N donor", AtomType.Type.NAM, true, false, AcceptorGeometry.AG_NONE, false),
+        new DonorAcceptorType
+        (N4D, "N sp3 charged donor", AtomType.Type.N4, true, false, AcceptorGeometry.AG_NONE, true),
+        // Use NPLCD instead of this
+        new DonorAcceptorType
+        (N2D, "N sp2 charged donor", AtomType.Type.N2, true, false, AcceptorGeometry.AG_NONE, true),
+        
+        // Elucidated Donors
+        new DonorAcceptorType
+        (NPLCD, "Planar charged N donor", AtomType.Type.ATM_NONE, true, false, AcceptorGeometry.AG_NONE, true),
+
+
+    };
+
+    public static DonorAcceptorType getDonorAcceptorType(int daType) {
+        for (int i=0; i<donorAcceptorTypes.length; i++) {
+            if (donorAcceptorTypes[i].donorAcceptorType == daType)
+                return donorAcceptorTypes[i];
+        }
+        System.err.println("No Donor Acceptor Type "+daType);
+        return null;
+    }
+
+    public static void setDonorAcceptorType(Atom atom, PrintStream out) {
+        
+        DonorAcceptorType daType = null;
+        AtomType.Type type = atom.type.type;
+
+        if ((type == AtomType.Type.NPL3 || type == AtomType.Type.N2 || type == AtomType.Type.NAR) &&
+            atom.bondOrder > 3.1  && atom.hydrogens.length > 0) {
+            daType = getDonorAcceptorType(NPLCD);
+        }
+        
+        else if ((type == AtomType.Type.NPL3 || type == AtomType.Type.N2 || 
+                  type == AtomType.Type.NAR) &&
+                 atom.bondOrder > 3.1 && atom.nNotDummyNeighbours >= 3) {
+            return;
+        }
+        
+        else if (type == AtomType.Type.O2 && atom.isAmideOxygen()) {
+            daType = getDonorAcceptorType(O2NA);
+        }
+
+        else if (type == AtomType.Type.O2 && atom.isSulphurOxygen()) {
+            daType = getDonorAcceptorType(SO2A);
+        }
+
+        else if (type == AtomType.Type.O3 && atom.nNotDummyNeighbours == 1) {
+            daType = getDonorAcceptorType(OMINUSA);
+        }
+
+        else if (atom.isAromaticOxygen()) {
+            // aromatic oxygens are very weak acceptors: maybe we
+            // should take it out.
+            // or leave it in?
+            daType = getDonorAcceptorType(OARA);
+        }  
+
+        // NACID
+        else if (type == AtomType.Type.NPL3 && atom.nSingleNeighbours == 2) {
+            daType = getDonorAcceptorType(NACIDA);
+        }
+
+        // NO2 Acceptor
+        else if (type == AtomType.Type.O2 && atom.NO2group) {
+            daType = getDonorAcceptorType(ONO2A);
+        }
+
+        // SO3- or SO2--
+        else if (type == AtomType.Type.OCO2 && 
+                 atom.nNotDummyNeighbours == 1 && 
+                 atom.notDummyNeighbours[0].type.isSulphurType()) {
+            daType = getDonorAcceptorType(SOCO2A);
+        }
+        
+        // PO2- or PO3--
+        else if (type == AtomType.Type.OCO2 && 
+                 atom.nNotDummyNeighbours == 1 && 
+                 atom.notDummyNeighbours[0].type.isPhosphorousType()) {
+            daType = getDonorAcceptorType(POCO2A);
+        }
+        
+        else {
+            for (int i=0; i<donorAcceptorTypes.length; i++) {
+                DonorAcceptorType testType = donorAcceptorTypes[i];
+                if (testType.atomType == null)
+                    continue;
+
+                if (atom.hydrogens.length > 0 && !testType.donor)
+                    continue;
+
+                if (atom.hydrogens.length == 0 && testType.donor)
+                    continue;
+                
+                if (type == testType.atomType.type) {
+                    daType = testType;
+                    break;
+                }
+            }
+        }
+
+        if (daType != null) {
+            atom.donorAcceptorType = daType;
+            if (daType.donor) {
+                for (int i=0; i<atom.hydrogens.length; i++) 
+                    atom.hydrogens[i].donorHydrogen = true;
+            }
+            out.print("Atom "+atom.info());
+            out.println(" matches "+daType.name);
+        }
+
+    }
+
+    public static void findMoleculeDonorAcceptors(Molecule mol) {
+        for (int i=0; i<mol.nAtoms; i++)
+            setDonorAcceptorType(mol.atoms[i], mol.out);
+    }
+    
+    public static void freeMoleculeDonorAcceptors(Molecule mol) {
+        for (int i=0; i<mol.nAtoms; i++)
+            mol.atoms[i].donorAcceptorType = null;
+    }
+
+}

@@ -1,0 +1,115 @@
+<html> <head>
+<title>DIFGAPE (DIstance Geometry Genetic Algorithm Pose Evaluator)</title>
+</head>
+
+<body>
+
+<h1>DIFGAPE (DIstance Geometry Genetic Algorithm Pose Evaluator)</h1>
+
+<h3>ROCS conformer selection and alignment</h3>
+
+<p> ROCS gnerates pairwise overlays betwen conformers.  Given a set of
+active compounds and a matrix of pairwise overlays between all
+conformers how do we select the best consistent set of conformers?</p>
+
+<p> A GA has been written to select a set of conformers (one for each
+active structure).  The chromosome is a integer string with position
+encoding structure number and value encoding conformer number. The
+fitness score is the average shape tanimoto between all conformers in
+the chromosome.  There exists the problem that the selected conformers
+may not fit togeteher in 3D space.  In order to correct for this we
+identify features in each conformer (currently we just use hetero
+atoms).  Given three conformers (say A, B, C) we have three ROCS
+overlays AB, BC and CA.  As a simple test we can penalize any
+violations of the triangle inequality for inter-feature distances. All
+distances for all structure triplets are evaluated and the
+(normalized) square of distance violations subtracted from the chromosome
+fitness.  </p>
+
+<h3>Using the GA</h3>
+
+<h4>Running Omega and ROCS</h4>
+
+These <a href="omega2.parm">Omega</a> and <a href="rocs.parm">ROCS</a>
+parameter files have been shown to create files consistent with the
+file and structure name input that gape expects.
+
+
+<h4>Preparing ROCS Input</h4>
+
+<p>All sdf files output from ROCS searches should be put in a single
+directory.  There shouldn't be any other sdf files in this directory.
+Each ROCS file should have the query conformer at the second structure
+and target alignments with shape tanimoto scores in subsequent
+entries. Each possible combination of pairwise alignments should be
+stored in the sdf files (i.e. configure ROCS to output all results and
+not just the top matches)</p>
+
+<p>This command parses the contents of the directory (all sdf files
+with the string "hits_" in the filename) to create an index file for
+all pairs (typically called "sdfparser.dat", though this can be
+changed to track datasets).  Once you've run this you don't need to
+run it again unless the ROCS results change</p>
+
+<code>
+&lt;INSTALL_DIR&gt;/sdfparser.sh &lt;ROCS_RESULTS_DIR&gt; &lt;INDEX_FILE_NAME&gt;
+</code>
+<p>
+
+<h4>Running the GA</h4>
+
+<code>
+&lt;INSTALL_DIR&gt;/conformermatch.sh &lt;CONFIGURATION_FILE_NAME&gt; &lt;INDEX_FILE_NAME&gt;
+</code>
+
+<p> A example configuration file is <a
+href="conformermatch.conf">conformermatch.conf</a>. The GA will report
+it's progress in the file <i>ga.out</i>.  At the end for the file will
+be the best solution from all GA runs.  The GA will also output a
+bunch of sdf files for this solution.</p>
+
+<h4>SDF files</h4>
+
+<p> The output is best explained by example.  Suppose the GA picks
+conformers GNF1_24, GNF2_37, Merck10_1, Norvatis_2, Merck4_18,
+Merck13_3, IRM_5, Merck12_1, IRM-GNF 1_49, IRM-GNF2_40, ONO_37 and
+Merck8_40.  The highest average pairwise similarity for this set
+belongs to IRM_5. Using the ROCS results we can create 12 overlays for
+this set- one using GNF1_23 as the query, one for GNF2_37 as the query
+and so on.  We can use least squares fitting to orientate the overlays
+to the overlay for IRM_5.  We then output all overlays as
+"GNF1_24_overlap.sdf", "GNF2_37_overlap.sdf" and so on.
+
+<p> We further extract the coordinates of GNF1_24 from all overlays
+and write them to "all_GNF1_24.sdf" and do the same for all
+conformers.  Finally we average the coordinates for each conformer
+(for example we look at the coordinates for GNF1_24 in each of the 12
+overlays and average those) and write them to
+"average_molecules_sdfparser.sdf" (assuming the index file is named
+"sdfparser.dat").  Finally, distant coordinates far from the average
+that are distorting structues are removed to create consenus
+coordinates which are saved in "consensus_molecules_sdfparser.sdf".  This final
+file is the best representation of the overlap.  </p>
+
+<p>
+You can perform this analysis for any set of conformers using this command:
+</p>
+
+<code>
+&lt;INSTALL_DIR&gt;/conformeroverlay.sh &lt;COMMA_SAPARATED_CONFOMER_NAMES&gt; &lt;INDEX_FILE_NAME&gt;
+</code>
+
+<p>
+You can use copy and paste to grab a comma-separated list of conformer
+names from the ga.out file to use in this command.
+</p>
+
+<h3>Method Description and Validation</h3>
+
+<p>All the gory details are in the
+acssociated <a href="paper.pdf">paper</a>.</p>
+
+<hr>
+<address><a href="mailto:jones_gareth@outlook.com">Gareth Jones &lt;jones_gareth@outlook.com&gt;</a></address>
+<!-- hhmts start -->Last modified: Wed Dec  3 10:53:09 PST 2008 <!-- hhmts end -->
+</body> </html>

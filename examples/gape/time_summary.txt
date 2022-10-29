@@ -1,0 +1,26 @@
+CDK2_Div
+Total    587.19 User    586.77 System      0.41
+CDK2_Focused
+Total    531.41 User    531.10 System      0.31
+DHFR
+Total   2222.17 User   2219.94 System      2.22
+Elastase
+Total    226.17 User    226.11 System      0.05
+ESR1
+Total   1924.00 User   1922.80 System      1.20
+FXa_Div
+Total    625.50 User    625.26 System      0.24
+FXa_Focused
+Total   1703.92 User   1702.95 System      0.97
+HIV_Div
+Total   4800.20 User   4795.64 System      4.56
+HIV_Div_MW
+Total   1039.23 User   1038.52 System      0.72
+HIV_Div_MW_RB
+Total    152.46 User    152.42 System      0.05
+P38
+Total   1252.65 User   1251.67 System      0.98
+Rhinovirus
+Total    595.68 User    595.49 System      0.19
+Trypsin
+Total    157.65 User    157.58 System      0.06

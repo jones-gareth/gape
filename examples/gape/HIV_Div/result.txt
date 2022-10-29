@@ -1,0 +1,27 @@
+loading GA_ranked_1.sdf
+loading xtal.sdf
+Adding 1 hydrogen(s) to atom 60:N.pl3 [N]
+atom 60:N.3 [N] matches Secondary Aliphatic Amine Base N[f]H(-C[nconn=4])-C[nconn=4] [pK 10.0]
+atom 116:N.2 [N] matches Guanidinium Base N[f]H=C(-N)-N [pK 14.4]
+Adding 1 hydrogen(s) to atom 60:N.3 [N]
+Adding 1 hydrogen(s) to atom 116:N.2 [N]
+atom 1:N.3 [N] matches Secondary Aliphatic Amine Base N[f]H(-C[nconn=4])-C[nconn=4] [pK 10.0]
+Adding 1 hydrogen(s) to atom 1:N.3 [N]
+Searching isomorphism 100
+Searching isomorphism 200
+Searching isomorphism 100
+Searching isomorphism 200
+Searching isomorphism 100
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+0/13, 0.0 []
+**Best** **fail** 0/13, 0.0 []

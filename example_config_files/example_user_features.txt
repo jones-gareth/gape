@@ -1,0 +1,72 @@
+
+# This is an example user feature definition file.  It's based on
+# Mills and Dean acceptor types.
+
+# Feature set name
+
+name = User Acceptors
+
+# Weight- The feature score is scaled by this weight in the the
+# chomosome fitness.  This should be a positive number for attractive
+# features (features you want to superimpose) and negative for
+# repulsive features.
+
+weight = 1500
+
+# Radius- the approximate radius of the feature gaussian (in angstrom).
+
+radius = 1.5
+
+# Atom_centered- the feature gausian is normally placed in the center
+# of the feature.  Set this to have the gaussian centered on the first
+# atom in the feature definition.
+
+atom_centered = yes
+
+#  Next comes the Feature section: each feature has a name, weight and
+#  SLN definition.  Leave this line in - it tells GAPE that the
+#  feature definition is starting.
+
+START_FEATURES
+
+#  Tabs separate fields
+
+#  The sln patterns only support these attributes: f, !h, is= and
+#  not=.  Z and Y act as Hev but must match the same elemental types,
+#  additionally X != Y.
+
+#  The weight is used to scale the gaussian overlays.  For two
+#  features the maximum gaussian overlay is 1.0 (when the features are
+#  on top of each other). The overlay score is scaled by the sum of
+#  the weights.
+
+	Name		Weight	SLN	     
+
+Terminal Phosphate	0.90	O[f]=:-P(=:-O[f])=:-O[f]
+Phosphinyl		0.64	O[f]:-P:-O[f]
+Carboxylate		0.56	O[f]:-C:-O[f]
+Asymetric Het6 N	0.54	N[1:f]:-=Z:-=Hev:-=Hev:-=Hev:=-Y:-@1
+Acid O			0.40	O=Any[is=P,C,S]-OH
+Symmetric Het5 N	0.48	N[1:f]:-=Z:-=Hev:-=Hev:=-Z:-@1
+Sulphoxide		0.40	O=S-Hev(-Hev)
+Primary Amine		0.40	N.3[f]H2-Hev
+Asymmetric Het5 N	0.39	N[1:f]:-=Z:-=Hev:-=Hev:=-Y:-@1
+Thiocarbonyl		0.39	S[f]=C
+Hydroxyl		0.38	O[f]H-Hev
+Symmetric Het6 N	0.38	N[1:f]:-=Z:-=Hev:-=Hev:-=Hev:=-Z:-@1
+Terminal Sulphate	0.35	O[f]=:-S(=:-O[f])=:-O[f]	
+Tertiary Amine		0.32	N.3[f](Hev)(Hev)Hev
+Ester O			0.17	O=C(-Hev)-O-Hev
+Carbamate O		0.20	O=C(-O-Hev)NH-Hev
+Nitrile			0.21	N#C
+Imine			0.19	N[f](-Any)=Hev
+Ketone			0.18	O=C(-Hev)-Any
+Ketone			0.40	O=C(-Hev)-Any
+Secondary Amine		0.18	N.3[f]H(-Hev)-Hev
+Phenol OH		0.13	OH-C[1]-:C=:C-:C=:C-:C=:@1
+Ether			0.11	O(-Hev)-Hev
+Phenyl NH2		0.08	NH2-C[1]-:C=:C-:C=:C-:C=:@1
+Het5 O			0.04	O[1]:-Hev:-=Hev:-=Hev:-=Hev:-@1
+Nitro O			0.04	O[f]=-N=-O[f]
+Sulphone		0.02	O=S(-Hev)-Hev
+

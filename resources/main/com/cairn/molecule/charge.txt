@@ -1,0 +1,63 @@
+
+# Gareth Jones 4/06
+
+# Patterns for common charged groups
+
+# Charge groups are defined by sln, formal and partial charges and a yes/no
+# indicating if the formal charge can appear more than once in a pattern.
+
+# Charged Amine
+N[f](-Any)(-Any)(-Any)(-Any) 1 1.0 yes
+  
+# Guanidinium
+N[f]H2=C(-N)-N 1 0.333 no
+N-C(=N[f]H2)-N 0 0.333 no
+
+# Amidine
+#N[f]H2=C(-N) 1 0.5 no
+#N-C(=N[f]H2) 0 0.5 no
+N[f](-Any)(-Any)-C=N[f]H(-Any) 0 0.5 no
+N[f]H(-Any)=C-N(-Any)(-Any) 1 0.5 no
+
+# Ortho Aminopryidine
+N[1:nconn=3]:C(-NH2):C:Any[is=C,N]:C:C:@1 1 0.5 no
+NH2-C[2]:C:Any[is=C,N]:C:C:N[nconn=3]:@2  0 0.5 no
+
+# Para Aminopryidine
+N[1:nconn=3]:C:Any[is=C,N]:C(-NH2):C:C:@1 1 0.5 no
+NH2-C[2]:Any[is=C,N]:C:N[nconn=3]:C:C:@2 0 0.5 no
+
+# Carboxylate
+O[f]-C=O -1 -0.5 no
+O=C-O[f] 0 -0.5 no
+
+# Hydroxamate
+O[f]-N=O -1 -0.5 no
+O=N-O[f] 0 -0.5 no
+
+# Tetrazole
+N[1:f]:N:N:C:N:@1 0 -0.25  no
+N[1:f]:N:N:N:C:@1 -1 -0.25  no
+
+# Acylsulponamide
+N[f]H(-C=O)-S(=O)=O -1 -1.0 no
+
+# Wyeth heterocycle
+N[1:f]-C(=O)-O-N-C(=O)-@1 -1 -1.0 no
+
+# Phosphinyl
+O[f]-P(=O)-O[f]  -1 -0.667 yes
+O=P(-O[f])-O[f]  0  -0.667 yes
+O[f]-P=O -1 -0.5   no
+O=P-O[f] 0 -0.5   no
+
+# Sulphonyl
+O[f]-S(=O)=O -1 -0.333 no
+O=S(=O)-O[f] 0 -0.333 no
+
+# Imidazole
+N[1:f]H:C:N[f]H:C:C:@1 1 1.0 no
+N[1:nconn=3]H:C:N[f](-C):C:C:@1 1 1.0 no
+
+# Pyridine
+N[1:nconn=3]:C:C:C:C:C:@1 1  1.0 no
